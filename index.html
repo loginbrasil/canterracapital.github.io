@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canterra Capital — O canteiro do seu patrimônio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --yellow: #FFE600;
+  --yellow-dim: #D4A017;
+  --black: #080808;
+  --black-mid: #111111;
+  --black-card: #181818;
+  --black-alt: #222222;
+  --concrete: #6B6B6B;
+  --concrete-lt: #B0B0B0;
+  --white: #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* UTILITY */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+.section { padding: 7rem 0; }
+.section-alt { background: var(--black-mid); }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  padding: 1.25rem 0;
+  background: rgba(8,8,8,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,230,0,0.08);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.nav-logo span { color: var(--yellow); display: block; font-size: 0.75rem; letter-spacing: 0.2em; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  color: var(--concrete-lt); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--yellow); }
+.nav-cta {
+  background: var(--yellow); color: var(--black);
+  padding: 0.6rem 1.5rem; border: none; cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.nav-cta:hover { background: #fff176; transform: translateY(-1px); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding-top: 80px;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.hero-stripe {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 5px; background: var(--yellow);
+}
+.hero-circle {
+  position: absolute; right: -120px; top: -120px;
+  width: 600px; height: 600px; border-radius: 50%;
+  border: 1px solid rgba(255,230,0,0.08);
+}
+.hero-circle2 {
+  position: absolute; right: 80px; top: 60px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: var(--black-card);
+  border: 1px solid rgba(107,107,107,0.2);
+}
+.hero-dot {
+  position: absolute; right: 2.5rem; bottom: 3rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--yellow);
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-eyebrow { margin-bottom: 1.2rem; }
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+.hero-title em { color: var(--yellow); font-style: normal; display: block; }
+.hero-subtitle {
+  font-size: 1.1rem; color: var(--concrete-lt);
+  line-height: 1.7; margin-bottom: 2.5rem;
+  font-weight: 300; max-width: 440px;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--yellow); color: var(--black);
+  padding: 0.9rem 2.2rem; border: none; cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 1rem; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: #fff176; transform: translateY(-2px); }
+.btn-outline {
+  background: transparent; color: var(--concrete-lt);
+  padding: 0.9rem 2.2rem; border: 1px solid var(--concrete);
+  cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600; font-size: 1rem; letter-spacing: 0.1em;
+  text-transform: uppercase; text-decoration: none;
+  display: inline-block;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+.hero-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: rgba(107,107,107,0.2);
+  border: 1px solid rgba(107,107,107,0.2);
+  margin-top: 3rem;
+}
+.stat-box {
+  background: var(--black-card);
+  padding: 1.5rem 1.2rem;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 2.4rem;
+  color: var(--yellow); line-height: 1;
+  display: block; margin-bottom: 0.4rem;
+}
+.stat-label {
+  font-size: 0.78rem; color: var(--concrete-lt);
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+
+/* COMO FUNCIONA */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.step {
+  padding: 3rem 2.5rem;
+  border: 1px solid rgba(107,107,107,0.15);
+  position: relative;
+  transition: border-color 0.3s;
+}
+.step:hover { border-color: rgba(255,230,0,0.3); }
+.step-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 4rem;
+  color: rgba(255,230,0,0.12); line-height: 1;
+  position: absolute; top: 1.5rem; right: 1.5rem;
+}
+.step-icon {
+  width: 48px; height: 48px;
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.step-icon svg { width: 24px; height: 24px; }
+.step h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 1.4rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  margin-bottom: 0.8rem;
+}
+.step p { color: var(--concrete-lt); font-size: 0.95rem; line-height: 1.7; font-weight: 300; }
+.step-arrow {
+  position: absolute; top: 50%; right: -1px;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid var(--yellow);
+  display: none; z-index: 2;
+}
+.step:not(:last-child) .step-arrow { display: block; }
+
+/* SIMULADOR */
+.simulator-wrap {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+}
+.sim-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 2.8rem;
+  text-transform: uppercase; line-height: 1;
+  margin: 1rem 0 1.2rem;
+}
+.sim-desc { color: var(--concrete-lt); line-height: 1.7; font-weight: 300; margin-bottom: 2rem; }
+.sim-card {
+  background: var(--black-card);
+  border: 1px solid rgba(107,107,107,0.2);
+  padding: 2.5rem;
+  border-top: 3px solid var(--yellow);
+}
+.sim-label {
+  font-size: 0.8rem; color: var(--concrete-lt);
+  text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 0.6rem; display: block;
+}
+.sim-input-wrap { position: relative; margin-bottom: 2rem; }
+.sim-prefix {
+  position: absolute; left: 1rem; top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 1.1rem;
+  color: var(--yellow);
+}
+.sim-input {
+  width: 100%; padding: 1rem 1rem 1rem 2.8rem;
+  background: var(--black-alt); border: 1px solid rgba(107,107,107,0.3);
+  color: var(--white); font-size: 1.1rem;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+  outline: none; transition: border-color 0.2s;
+}
+.sim-input:focus { border-color: var(--yellow); }
+.sim-slider { width: 100%; margin-bottom: 2rem; }
+.sim-slider input[type=range] {
+  width: 100%; height: 4px;
+  -webkit-appearance: none;
+  background: linear-gradient(to right, var(--yellow) 0%, var(--concrete) 0%);
+  outline: none; cursor: pointer;
+}
+.sim-slider input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--yellow); cursor: pointer;
+  border: 2px solid var(--black);
+}
+.sim-range-labels {
+  display: flex; justify-content: space-between;
+  font-size: 0.75rem; color: var(--concrete); margin-top: 0.4rem;
+}
+.sim-divider { border: none; border-top: 1px solid rgba(107,107,107,0.2); margin: 2rem 0; }
+.sim-result-row { display: flex; justify-content: space-between; margin-bottom: 1rem; align-items: center; }
+.sim-result-label { color: var(--concrete-lt); font-size: 0.9rem; }
+.sim-result-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 1.1rem;
+}
+.sim-result-val.highlight {
+  color: var(--yellow); font-size: 1.4rem;
+}
+.sim-total {
+  background: rgba(255,230,0,0.06);
+  border: 1px solid rgba(255,230,0,0.2);
+  padding: 1.5rem;
+  text-align: center; margin-top: 1.5rem;
+}
+.sim-total-label { font-size: 0.8rem; color: var(--concrete-lt); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+.sim-total-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 2.8rem; color: var(--yellow); line-height: 1;
+}
+
+/* COMPARATIVO */
+.compare-table { width: 100%; border-collapse: collapse; margin-top: 3rem; }
+.compare-table th {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 0.8rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--concrete); padding: 1rem 1.5rem;
+  text-align: left; border-bottom: 1px solid rgba(107,107,107,0.2);
+}
+.compare-table td {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid rgba(107,107,107,0.1);
+  font-size: 0.95rem; color: var(--concrete-lt);
+}
+.compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+.compare-table .highlight-row td {
+  background: rgba(255,230,0,0.05) !important;
+  color: var(--yellow);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 1.05rem;
+  border-top: 1px solid rgba(255,230,0,0.3);
+  border-bottom: 1px solid rgba(255,230,0,0.3);
+}
+.compare-table .highlight-row td:first-child { color: var(--white); }
+
+/* POR QUE */
+.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(107,107,107,0.15); margin-top: 3rem; }
+.why-card {
+  background: var(--black-card); padding: 2.5rem;
+  position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.why-card:hover { background: var(--black-alt); }
+.why-card::before {
+  content: ''; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--yellow);
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 0.3s;
+}
+.why-card:hover::before { transform: scaleY(1); }
+.why-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 1.25rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  margin-bottom: 0.8rem;
+}
+.why-card p { color: var(--concrete-lt); font-size: 0.9rem; line-height: 1.7; font-weight: 300; }
+.why-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 3.5rem;
+  color: rgba(255,230,0,0.07); line-height: 1;
+  position: absolute; bottom: 1rem; right: 1.5rem;
+}
+
+/* FORM */
+.form-wrap {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+.form-left h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 3rem;
+  text-transform: uppercase; line-height: 1;
+  margin: 1rem 0 1.2rem;
+}
+.form-left p { color: var(--concrete-lt); line-height: 1.7; font-weight: 300; }
+.form-promise {
+  margin-top: 2.5rem; padding: 1.5rem;
+  background: var(--black-card);
+  border-left: 3px solid var(--yellow);
+}
+.form-promise p {
+  font-size: 0.9rem; color: var(--concrete-lt);
+  line-height: 1.7; font-weight: 300;
+}
+.form-promise strong { color: var(--white); }
+.form-right { background: var(--black-card); padding: 2.5rem; border-top: 3px solid var(--yellow); }
+.field { margin-bottom: 1.5rem; }
+.field label {
+  display: block; font-size: 0.78rem;
+  color: var(--concrete-lt); text-transform: uppercase;
+  letter-spacing: 0.12em; margin-bottom: 0.5rem;
+}
+.field input, .field select {
+  width: 100%; padding: 0.9rem 1rem;
+  background: var(--black-alt); border: 1px solid rgba(107,107,107,0.3);
+  color: var(--white); font-size: 0.95rem;
+  font-family: 'Barlow', sans-serif; font-weight: 400;
+  outline: none; transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+.field input::placeholder { color: var(--concrete); }
+.field input:focus, .field select:focus { border-color: var(--yellow); }
+.field select { cursor: pointer; }
+.field select option { background: var(--black-alt); }
+.form-submit {
+  width: 100%; padding: 1.1rem;
+  background: var(--yellow); color: var(--black);
+  border: none; cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 1.1rem; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 0.5rem;
+}
+.form-submit:hover { background: #fff176; transform: translateY(-2px); }
+.form-note { font-size: 0.75rem; color: var(--concrete); text-align: center; margin-top: 1rem; }
+
+/* FOOTER */
+footer {
+  background: var(--black-mid);
+  border-top: 1px solid rgba(107,107,107,0.15);
+  padding: 3rem 0;
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.footer-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 1.3rem;
+  letter-spacing: 0.08em; line-height: 1;
+}
+.footer-logo span { color: var(--yellow); display: block; font-size: 0.7rem; letter-spacing: 0.2em; margin-top: 2px; }
+.footer-slogan { color: var(--concrete); font-size: 0.85rem; font-style: italic; }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a { color: var(--concrete); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--yellow); }
+.footer-copy { width: 100%; text-align: center; padding-top: 2rem; border-top: 1px solid rgba(107,107,107,0.1); margin-top: 1rem; }
+.footer-copy p { font-size: 0.78rem; color: var(--concrete); }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
+  background: var(--yellow); color: var(--black);
+  padding: 1rem 1.5rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  transform: translateY(100px); opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* SECTION TITLES */
+.section-header { margin-bottom: 3.5rem; }
+.section-header h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: clamp(2.2rem, 4vw, 3.2rem);
+  text-transform: uppercase; line-height: 1;
+  margin-top: 0.8rem;
+}
+.section-header p {
+  color: var(--concrete-lt); font-size: 1rem;
+  line-height: 1.7; font-weight: 300;
+  max-width: 560px; margin-top: 1rem;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+.fade-up:nth-child(1) { animation-delay: 0.1s; }
+.fade-up:nth-child(2) { animation-delay: 0.25s; }
+.fade-up:nth-child(3) { animation-delay: 0.4s; }
+
+@media (max-width: 768px) {
+  .hero-grid, .simulator-wrap, .form-wrap, .why-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .step-arrow { display: none !important; }
+  .nav-links { display: none; }
+  .hero-stats { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">CANTERRA<span>CAPITAL</span></div>
+    <ul class="nav-links">
+      <li><a href="#como-funciona">Como funciona</a></li>
+      <li><a href="#simulador">Simulador</a></li>
+      <li><a href="#comparativo">Comparativo</a></li>
+      <li><a href="#contato">Quero investir</a></li>
+    </ul>
+    <a href="#contato" class="nav-cta">Quero investir</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-stripe"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-circle2"></div>
+    <div class="hero-dot"></div>
+  </div>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <p class="tag fade-up">Indaiatuba, SP · Investimento imobiliário</p>
+        <h1 class="hero-title fade-up">
+          O canteiro<br>
+          <em>do seu<br>patrimônio.</em>
+        </h1>
+        <p class="hero-subtitle fade-up">Investimento em construções de baixo padrão com retorno de <strong style="color:var(--white)">25% em 12 meses</strong>. Você investe, a gente constrói, o resultado chega.</p>
+        <div class="hero-actions fade-up">
+          <a href="#contato" class="btn-primary">Quero investir agora</a>
+          <a href="#como-funciona" class="btn-outline">Como funciona</a>
+        </div>
+        <div class="hero-stats fade-up">
+          <div class="stat-box">
+            <span class="stat-num">25%</span>
+            <span class="stat-label">Retorno em 12 meses</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">12</span>
+            <span class="stat-label">Meses por ciclo</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">IDA</span>
+            <span class="stat-label">Indaiatuba & região</span>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section section-alt" id="como-funciona">
+  <div class="container">
+    <div class="section-header">
+      <p class="tag">O modelo</p>
+      <h2>Como funciona</h2>
+      <p>Três etapas simples. Do terreno ao retorno, você acompanha tudo.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3>Terreno de oportunidade</h3>
+        <p>Identificamos terrenos com alto potencial em Indaiatuba e região — muitas vezes via permuta direta com o proprietário, reduzindo o custo de aquisição.</p>
+        <div class="step-arrow"></div>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="1"/>
+            <path d="M8 21h8M12 17v4"/>
+            <path d="M7 8h10M7 11h6"/>
+          </svg>
+        </div>
+        <h3>Gestão da obra</h3>
+        <p>Gerenciamos 100% da construção — projeto, materiais, mão de obra e prazo. Você recebe relatórios periódicos e acompanha o progresso em tempo real.</p>
+        <div class="step-arrow"></div>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+            <polyline points="17 6 23 6 23 12"/>
+          </svg>
+        </div>
+        <h3>Retorno de 25%</h3>
+        <p>Ao final do ciclo de 12 meses, você recebe o capital investido mais 25% de rentabilidade. Simples, direto e com contrato individual para cada investidor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULADOR -->
+<section class="section" id="simulador">
+  <div class="container">
+    <div class="simulator-wrap">
+      <div>
+        <p class="tag">Simule seu retorno</p>
+        <h2 class="sim-title">Quanto você quer ganhar?</h2>
+        <p class="sim-desc">Coloque o valor que você pensou em investir e veja quanto recebe de volta em 12 meses com a Canterra Capital.</p>
+        <div style="margin-top:2rem; padding:1.5rem; background:var(--black-card); border-left:3px solid var(--yellow-dim);">
+          <p style="font-size:0.85rem; color:var(--concrete-lt); line-height:1.7;">
+            <strong style="color:var(--white); display:block; margin-bottom:0.4rem">Por que 25%?</strong>
+            Construções de baixo padrão em Indaiatuba têm alta demanda e baixo custo relativo. A margem da obra sustenta o retorno do investidor com sobra para a operação.
+          </p>
+        </div>
+      </div>
+      <div class="sim-card">
+        <span class="sim-label">Valor do investimento</span>
+        <div class="sim-input-wrap">
+          <span class="sim-prefix">R$</span>
+          <input class="sim-input" type="number" id="simValue" value="50000" min="10000" max="1000000" step="5000">
+        </div>
+        <span class="sim-label">Ajuste pelo slider</span>
+        <div class="sim-slider">
+          <input type="range" id="simSlider" min="10000" max="500000" value="50000" step="5000">
+          <div class="sim-range-labels"><span>R$ 10.000</span><span>R$ 500.000</span></div>
+        </div>
+        <hr class="sim-divider">
+        <div class="sim-result-row">
+          <span class="sim-result-label">Capital investido</span>
+          <span class="sim-result-val" id="resCapital">R$ 50.000</span>
+        </div>
+        <div class="sim-result-row">
+          <span class="sim-result-label">Rentabilidade (25%)</span>
+          <span class="sim-result-val highlight" id="resRendimento">+ R$ 12.500</span>
+        </div>
+        <div class="sim-result-row">
+          <span class="sim-result-label">Prazo</span>
+          <span class="sim-result-val">12 meses</span>
+        </div>
+        <div class="sim-total">
+          <div class="sim-total-label">Você recebe no total</div>
+          <div class="sim-total-val" id="resTotal">R$ 62.500</div>
+        </div>
+        <a href="#contato" class="btn-primary" style="width:100%;display:block;text-align:center;margin-top:1.5rem">Quero esse retorno</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVO -->
+<section class="section section-alt" id="comparativo">
+  <div class="container">
+    <div class="section-header">
+      <p class="tag">Comparativo</p>
+      <h2>Seu dinheiro merece mais</h2>
+      <p>Compare a rentabilidade da Canterra Capital com as alternativas mais comuns do mercado para um investimento de R$ 50.000.</p>
+    </div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Rentabilidade 12 meses</th>
+          <th>Rendimento (R$ 50.000)</th>
+          <th>Você recebe</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Poupança</td>
+          <td>~6,2% a.a.</td>
+          <td>R$ 3.100</td>
+          <td>R$ 53.100</td>
+        </tr>
+        <tr>
+          <td>CDB 100% CDI</td>
+          <td>~10,5% a.a.</td>
+          <td>R$ 5.250</td>
+          <td>R$ 55.250</td>
+        </tr>
+        <tr>
+          <td>Tesouro Direto</td>
+          <td>~11,5% a.a.</td>
+          <td>R$ 5.750</td>
+          <td>R$ 55.750</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Canterra Capital</td>
+          <td>25% fixo</td>
+          <td>R$ 12.500</td>
+          <td>R$ 62.500</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:1.5rem; font-size:0.75rem; color:var(--concrete); font-style:italic;">* Valores simulados para fins ilustrativos. Rentabilidades baseadas em médias de mercado. Canterra Capital opera sob contrato individual com cada investidor.</p>
+  </div>
+</section>
+
+<!-- POR QUE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <p class="tag">Nossos diferenciais</p>
+      <h2>Por que a Canterra Capital</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-num">01</span>
+        <h3>Local e transparente</h3>
+        <p>Operamos em Indaiatuba e região. Você pode visitar o terreno, acompanhar a obra e falar diretamente com a gestão. Nada de caixas pretas.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-num">02</span>
+        <h3>Contrato individual</h3>
+        <p>Cada investidor tem seu contrato. Valores, prazo e retorno definidos no papel antes de qualquer movimentação de dinheiro.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-num">03</span>
+        <h3>Permuta inteligente</h3>
+        <p>Muitos terrenos são adquiridos via permuta, o que reduz o custo de aquisição e aumenta a margem disponível para o retorno do investidor.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-num">04</span>
+        <h3>Retorno em 12 meses</h3>
+        <p>Ciclos curtos e previsíveis. Você sabe exatamente quando vai receber e quanto. Sem prazo indefinido, sem surpresas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="section section-alt" id="contato">
+  <div class="container">
+    <div class="form-wrap">
+      <div class="form-left">
+        <p class="tag">Quero investir</p>
+        <h2>Dê o primeiro passo</h2>
+        <p>Preencha o formulário ao lado. Nossa equipe entra em contato em até 24 horas com todas as informações sobre o próximo ciclo disponível.</p>
+        <div class="form-promise">
+          <p><strong>Sem compromisso.</strong> O contato inicial é apenas para apresentar o modelo e tirar suas dúvidas. Você decide com calma se faz sentido para você.</p>
+        </div>
+        <div style="margin-top:2.5rem;">
+          <p style="font-size:0.85rem; color:var(--concrete-lt); margin-bottom:0.5rem;">📍 Indaiatuba, SP</p>
+          <p style="font-size:0.85rem; color:var(--concrete-lt); margin-bottom:0.5rem;">📱 @canterracapital</p>
+          <p style="font-size:0.85rem; color:var(--concrete-lt);">🌐 canterracapital.com.br</p>
+        </div>
+      </div>
+      <div class="form-right">
+        <div class="field">
+          <label>Seu nome completo</label>
+          <input type="text" placeholder="João Silva" id="fname">
+        </div>
+        <div class="field">
+          <label>WhatsApp</label>
+          <input type="tel" placeholder="(19) 99999-9999" id="fphone">
+        </div>
+        <div class="field">
+          <label>E-mail</label>
+          <input type="email" placeholder="joao@email.com" id="femail">
+        </div>
+        <div class="field">
+          <label>Quanto pretende investir?</label>
+          <select id="fvalue">
+            <option value="">Selecione uma faixa</option>
+            <option>Até R$ 30.000</option>
+            <option>R$ 30.000 – R$ 80.000</option>
+            <option>R$ 80.000 – R$ 200.000</option>
+            <option>Acima de R$ 200.000</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Como nos conheceu?</label>
+          <select id="fsource">
+            <option value="">Selecione</option>
+            <option>Indicação de amigo ou familiar</option>
+            <option>Instagram</option>
+            <option>WhatsApp</option>
+            <option>LinkedIn</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Quero ser contactado →</button>
+        <p class="form-note">Seus dados são 100% confidenciais. Sem spam.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        CANTERRA
+        <span>CAPITAL</span>
+      </div>
+      <p class="footer-slogan">O canteiro do seu patrimônio.</p>
+      <div class="footer-links">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#simulador">Simulador</a>
+        <a href="#contato">Investir</a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>© 2025 Canterra Capital · Indaiatuba, SP · Todos os direitos reservados · Operações reguladas por contrato individual</p>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✓ Recebemos seu contato! Falaremos em breve.</div>
+
+<script>
+// SIMULADOR
+const simValue = document.getElementById('simValue');
+const simSlider = document.getElementById('simSlider');
+const resCapital = document.getElementById('resCapital');
+const resRendimento = document.getElementById('resRendimento');
+const resTotal = document.getElementById('resTotal');
+
+function fmt(n) {
+  return 'R$ ' + Math.round(n).toLocaleString('pt-BR');
+}
+
+function updateSim(val) {
+  const v = Math.max(10000, Math.min(1000000, Number(val)));
+  const rendimento = v * 0.25;
+  const total = v + rendimento;
+  resCapital.textContent = fmt(v);
+  resRendimento.textContent = '+ ' + fmt(rendimento);
+  resTotal.textContent = fmt(total);
+
+  const pct = Math.min(100, ((v - 10000) / (500000 - 10000)) * 100);
+  simSlider.style.background = `linear-gradient(to right, var(--yellow) ${pct}%, var(--concrete) ${pct}%)`;
+}
+
+simValue.addEventListener('input', (e) => {
+  simSlider.value = Math.min(500000, e.target.value);
+  updateSim(e.target.value);
+});
+
+simSlider.addEventListener('input', (e) => {
+  simValue.value = e.target.value;
+  updateSim(e.target.value);
+});
+
+updateSim(50000);
+
+// FORM
+function submitForm() {
+  const name = document.getElementById('fname').value;
+  const phone = document.getElementById('fphone').value;
+  const email = document.getElementById('femail').value;
+  if (!name || !phone || !email) {
+    alert('Por favor preencha nome, WhatsApp e e-mail.');
+    return;
+  }
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.borderBottomColor = window.scrollY > 50
+    ? 'rgba(255,230,0,0.15)'
+    : 'rgba(255,230,0,0.08)';
+});
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      e.target.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.step, .why-card, .stat-box').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
